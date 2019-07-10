@@ -33,7 +33,7 @@ it("should discount object when invoke getDiscount given orderList", ()=> {
   //when
   const result = bestCharge.getDiscount(arr);
   //then
-  expect(result).toStrictEqual({total:78.00,mode:'指定菜品半价',offerPrice:36.00});
+  expect(result).toStrictEqual({total:78.00,mode:'指定菜品半价',offerPrice:36.00,items:['黄焖鸡']});
 })
 
 it("should discount object when invoke getDiscount given orderList", ()=> {
@@ -42,5 +42,5 @@ it("should discount object when invoke getDiscount given orderList", ()=> {
   //when
   const result = bestCharge.getDiscount(arr);
   //then
-  expect(result).toStrictEqual({total:44.00,mode:'满30减6元',offerPrice:6.00});
+  expect(result).toStrictEqual({total:44.00,mode:'满30减6元',offerPrice:6.00,items:[]});
 })
