@@ -12,7 +12,7 @@ function bestCharge(selectedItems) {
   if(discount.mode !== ''){
     result += '使用优惠:\n' + discount.mode;
     if(discount.mode === '指定菜品半价'){
-      let itemString = discount.items.join('');
+      let itemString = discount.items.join('，');
       result += '(' + itemString +')';
     }
     result += '，省' + discount.offerPrice + '元\n-----------------------------------\n';
@@ -65,14 +65,14 @@ const getDiscount = orderList => {
         discount.offerPrice = 6;
       }
     }else{
-      let number = Number.POSITIVE_INFINITY;
+      let number = totalFirst;
       let idList = promotion.items;
       let items = [];
       orderIdList.forEach(orderId => {
         if(idList.indexOf(orderId) > -1){
           let order = orderList[orderIdList.indexOf(orderId)];
           items.push(order.name);
-          number = totalFirst - order.price * order.num / 2;
+          number = number - order.price * order.num / 2;
         }
         if(number < total){
           total = number;
@@ -85,6 +85,7 @@ const getDiscount = orderList => {
   })
   return discount;
 }
+
 module.exports = {isItemExist,createOrder,getDiscount,bestCharge};
 
 
